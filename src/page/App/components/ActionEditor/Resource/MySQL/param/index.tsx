@@ -7,8 +7,10 @@ import { panelPaddingStyle } from "./style"
 
 export const MySQLParam: FC<MySQLParamProps> = (props) => {
   const { onChange } = props
-  const { query = "", mode = "sql" } =
-    useSelector(getSelectedAction)?.actionTemplate ?? {}
+  const {
+    actionTemplate: { query = "", mode = "sql" },
+    displayName,
+  } = useSelector(getSelectedAction) ?? { actionTemplate: {} }
 
   return (
     <div css={panelPaddingStyle}>
@@ -22,6 +24,7 @@ export const MySQLParam: FC<MySQLParamProps> = (props) => {
         expectedType="String"
         height="88px"
         lineNumbers
+        path={`${displayName}.query`}
       />
     </div>
   )

@@ -70,11 +70,13 @@ export const ActionEditorPanel: FC<ActionEditorPanelProps> = (props) => {
             <AnimatePresence>
               {activeActionItem?.error && (
                 <ActionResultErrorIndicator
+                  key="indicator"
                   errorMessage={activeActionItem?.data?.errorMessage}
                 />
               )}
               {actionResVisible && (
                 <ActionResult
+                  key="result"
                   result={result}
                   error={activeActionItem?.error}
                   onClose={handleCloseActionResult}
